@@ -1,0 +1,1 @@
+# v2ray-domain-list [![Build Status](https://travis-ci.com/wsxxsy/v2ray-domain-list.svg?branch=master)](https://travis-ci.com/wsxxsy/v2ray-domain-list) [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://travis-ci.com/wsxxsy/v2ray-domain-list)

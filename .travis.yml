@@ -1,0 +1,9 @@
+before_install:
+  - sudo apt-get update
+  - sudo apt-get install -y git curl wget
+
+script: bash ./deploy.sh
+
+branches:
+  only:
+    - master
