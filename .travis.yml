@@ -2,7 +2,8 @@ before_install:
   - sudo apt-get update
   - sudo apt-get install -y git curl wget
 
-script: bash ./deploy.sh
+script:
+  - 'if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then bash ./deploy.sh; fi'
 
 branches:
   only:
