@@ -22,8 +22,9 @@ cat sr_top500_banlist_ad.conf | grep Reject | grep DOMAIN-SUFFIX | awk -F, '{pri
 cat sr_top500_banlist_ad.conf | grep Proxy | grep IP-CIDR | awk -F, '{print $2}' > ip/gfw
 cat sr_top500_banlist_ad.conf | grep Proxy | grep DOMAIN-SUFFIX | awk -F, '{print $2}' > site/gfw
 
-chmod +x ./v2ray-domain-list
-./v2ray-domain-list
+#chmod +x ./v2ray-domain-list
+#./v2ray-domain-list
+go run main.go
 
 rm -rf geoip.dat geosite.dat sr_top500_banlist_ad.conf
 
