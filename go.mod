@@ -1,4 +1,4 @@
-module github.com/wsxxsy/v2ray-domain-list
+module github.com/wsxxsy/v2ray-dat
 
 go 1.13
 
