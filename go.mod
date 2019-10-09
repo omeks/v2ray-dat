@@ -1,4 +1,4 @@
-module github.com/wsxxsy/v2ray-dat
+module github.com/shmilwdc/v2ray-dat
 
 go 1.13
 
