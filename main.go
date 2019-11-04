@@ -27,7 +27,7 @@ func init() {
 		panic("exec os.Getwd() err")
 	}
 
-	datPath = path.Join(dir, "dat")
+	datPath = dir
 	ipPath = path.Join(dir, "ip")
 	sitePath = path.Join(dir, "site")
 }

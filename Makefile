@@ -3,10 +3,10 @@
 all: build
 
 clean:
-	@rm -rf dat/* ip/* site/* tmp
+	@rm -rf ip/* site/* tmp
 
 vendor: clean
-	@mkdir -p dat ip site tmp
+	@mkdir -p ip site tmp
 	@wget -O tmp/geoip.dat https://github.com/v2ray/geoip/releases/latest/download/geoip.dat
 	@wget -O tmp/geosite.dat https://github.com/v2ray/domain-list-community/releases/latest/download/dlc.dat
 
@@ -25,6 +25,6 @@ parse: vendor
 	@cat tmp/adblock.conf | grep address | awk -F/ '{print $$2}' >> site/ad
 	@cat tmp/gfwlist.conf | grep ipset | awk -F/ '{print $$2}' | sed 's/^.//g' >> site/gfw
 
-build: parse
+build:
 	@go run main.go
 	@rm -rf tmp

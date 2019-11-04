@@ -6,7 +6,7 @@ on:
       - master
   pull_request:
   schedule:
-    - cron:  0 0 * * *
+    - cron:  0 0 */7 * *
 
 jobs:
   build:
@@ -22,15 +22,16 @@ jobs:
       - name: Check out code
         uses: actions/checkout@v1
 
-      - name: Build
-        run: make build
+      - name: Parse conf
+        run: make parse
 
       - name: Push
         run: |
-          git add -A
           git config --global user.name "${GITHUB_ACTOR}"
           git config --global user.email "${GITHUB_ACTOR}@users.noreply.github.com"
-          if ! git diff-index --quiet HEAD --; then git commit -m ':art: Daily build'; fi
+          git add ip/* site/*
+          git commit -m ':art: Weekly build' || true
+          git tag -m ':art: Weekly build' -a v`date "+%Y%m%d"` || true
           git push https://${GITHUB_ACTOR}:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git HEAD:master
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
