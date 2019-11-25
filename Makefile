@@ -1,4 +1,4 @@
-#.PHONY: all clean vendor parse build
+.PHONY: all clean vendor parse build
 
 all: build
 
@@ -7,8 +7,6 @@ clean:
 
 vendor: clean
 	@mkdir -p ip site tmp
-	@wget -O tmp/geoip.dat https://github.com/v2ray/geoip/releases/latest/download/geoip.dat
-	@wget -O tmp/geosite.dat https://github.com/v2ray/domain-list-community/releases/latest/download/dlc.dat
 
 	@wget -O tmp/sr_top500_banlist_ad.conf https://raw.githubusercontent.com/h2y/Shadowrocket-ADBlock-Rules/master/sr_top500_banlist_ad.conf
 
@@ -26,5 +24,8 @@ parse: vendor
 	@cat tmp/gfwlist.conf | grep ipset | awk -F/ '{print $$2}' | sed 's/^.//g' >> site/gfw
 
 build:
+	@mkdir -p tmp
+	@wget -O tmp/geoip.dat https://github.com/v2ray/geoip/releases/latest/download/geoip.dat
+	@wget -O tmp/geosite.dat https://github.com/v2ray/domain-list-community/releases/latest/download/dlc.dat
 	@go run main.go
 	@rm -rf tmp
