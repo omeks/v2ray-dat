@@ -25,7 +25,7 @@ parse: vendor
 
 build:
 	@mkdir -p tmp
-	@wget -O tmp/geoip.dat https://github.com/v2ray/geoip/releases/latest/download/geoip.dat
-	@wget -O tmp/geosite.dat https://github.com/v2ray/domain-list-community/releases/latest/download/dlc.dat
+	@wget -O tmp/geoip.dat https://github.com/v2ray/geoip/raw/release/geoip.dat
+	@wget -O tmp/geosite.dat https://github.com/v2ray/domain-list-community/raw/release/dlc.dat
 	@go run main.go
 	@rm -rf tmp
